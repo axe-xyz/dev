@@ -1,28 +1,59 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import "@rainbow-me/rainbowkit/styles.css";
+import { ConnectButton, getDefaultWallets, RainbowKitProvider} from "@rainbow-me/rainbowkit";
+import { Chain, configureChains } from 'wagmi'
+import { alchemyProvider } from 'wagmi/providers/alchemy'
+import { infuraProvider } from 'wagmi/providers/infura'
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 
-function App() {
+import { chain, createClient, WagmiConfig } from "wagmi";
+// import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
 
-  //Wallet connection TO DO 
+const arbitrum_testnet: Chain = {
+  id: 421613,
+  name: 'Arbitrum',
+  network: 'Arbitrum',
+  iconUrl: 'https://example.com/icon.svg',
+  iconBackground: '#fff',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Arbitrum Nitro Rollup Testnet',
+    symbol: 'ETH',
+  },
+  rpcUrls: {
+    default: 'https://goerli-rollup.arbitrum.io/rpc',
+  },
+  blockExplorers: {
+    default: { name: 'Etherscan', url: 'https://goerli-rollup-explorer.arbitrum.io/' },
+    etherscan: { name: 'Etherscan', url: 'https://goerli-rollup-explorer.arbitrum.io/' },
+  },
+  testnet: true,
+};
 
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon, chain.arbitrum, avalancheChain,arbitrum_testnet],
+  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
+);
 
+const { connectors } = getDefaultWallets({
+  appName: "My RainbowKit App",
+  chains
+});
 
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider
+});
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WagmiConfig client={wagmiClient}>
+      <RainbowKitProvider chains={chains}>
+        <ConnectButton/>
+      </RainbowKitProvider>
+    </WagmiConfig>
   );
 }
-
-export default App;
