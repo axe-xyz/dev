@@ -1,4 +1,4 @@
-# 0xAve.xyz
+# 0xAxe.xyz
 The overview of 0xaxe.xyz . It's a cross-chain NFT staking solution. Build in Arbitrum hackathon 2022 in Bogota.
 Cross chain liquidity pool for NFT(ERC721). Pool for multichain ERC20 and ERC721 on Arbitrum. 
 
