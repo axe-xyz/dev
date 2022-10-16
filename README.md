@@ -26,7 +26,7 @@ Arbitrum has a huge potential for MetaFi. There are great DeFi systems and great
 
 
 ## Future works
-- [] develop Cross-chain ERC721 liquidity with NFT bridge by Arbitrum: 
+- [ ] develop Cross-chain ERC721 liquidity with NFT bridge by Arbitrum: 
 Users can create a liquidity pool with ERC20/ERC721 on other chains. 
 
 ## Others 
