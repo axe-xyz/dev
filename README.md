@@ -6,9 +6,7 @@ Cross chain liquidity pool for NFT(ERC721). Pool for multichain ERC20 and ERC721
 
 🖌️ UI/UX Design: https://www.figma.com/file/cht2uxQYbhR2jVkWQXXKzr/0xaxe.xyz?node-id=0%3A1
 
-🖥️ Frontend: xxxx
-
-💡 Backend: xxxxx
+Demo: https://www.figma.com/proto/cht2uxQYbhR2jVkWQXXKzr/0xaxe.xyz?page-id=0%3A1&node-id=13%3A230&viewport=216%2C-36%2C0.06&scaling=scale-down&starting-point-node-id=13%3A230
 
 
 ## Motivations
