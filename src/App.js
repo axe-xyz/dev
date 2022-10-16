@@ -4,8 +4,6 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { ConnectButton, getDefaultWallets, RainbowKitProvider} from "@rainbow-me/rainbowkit";
 import { Chain, configureChains } from 'wagmi'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
-import { infuraProvider } from 'wagmi/providers/infura'
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 
 import { chain, createClient, WagmiConfig } from "wagmi";
 // import { alchemyProvider } from "wagmi/providers/alchemy";
@@ -13,13 +11,12 @@ import { publicProvider } from "wagmi/providers/public";
 
 const arbitrum_testnet: Chain = {
   id: 421613,
-  name: 'Arbitrum',
-  network: 'Arbitrum',
-  iconUrl: 'https://example.com/icon.svg',
+  name: 'Arbitrum Testnet',
+  network: 'Arbitrum Nitro Rollup Testnet',
   iconBackground: '#fff',
   nativeCurrency: {
     decimals: 18,
-    name: 'Arbitrum Nitro Rollup Testnet',
+    name: 'Arbitrum Goerli',
     symbol: 'ETH',
   },
   rpcUrls: {
@@ -33,7 +30,7 @@ const arbitrum_testnet: Chain = {
 };
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.arbitrum, avalancheChain,arbitrum_testnet],
+  [chain.mainnet, chain.polygon,arbitrum_testnet],
   [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
