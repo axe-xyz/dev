@@ -1,12 +1,15 @@
 import logo from './logo.svg';
+import React from 'react'
+import { useSignMessage } from 'wagmi'
+import { verifyMessage } from 'ethers/lib/utils'
 import './App.css';
 import "@rainbow-me/rainbowkit/styles.css";
 import { ConnectButton, getDefaultWallets, RainbowKitProvider} from "@rainbow-me/rainbowkit";
 import { Chain, configureChains } from 'wagmi'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
-
 import { chain, createClient, WagmiConfig } from "wagmi";
-// import { alchemyProvider } from "wagmi/providers/alchemy";
+// import SignMessage from './hopScripts/bridge';
+import EthArbBridge from './hopScripts/bridge';
 import { publicProvider } from "wagmi/providers/public";
 
 const arbitrum_testnet: Chain = {
@@ -50,6 +53,7 @@ export default function App() {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <ConnectButton/>
+        <button onClick={()=> {EthArbBridge(provider,wagmiClient)}}> Swap stuff </button>
       </RainbowKitProvider>
     </WagmiConfig>
   );
