@@ -1,5 +1,6 @@
 import logo from './logo.svg';
-import React from 'react'
+import React, { useState } from 'react'
+import ReactScrollableList from 'react'
 import { useSignMessage } from 'wagmi'
 import { verifyMessage } from 'ethers/lib/utils'
 import './App.css';
@@ -50,11 +51,19 @@ const wagmiClient = createClient({
 
 export default function App() {
   return (
+    <div>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <ConnectButton/>
-        <button onClick={()=> {EthArbBridge(provider,wagmiClient)}}> Swap stuff </button>
+        <button onClick={()=> {EthArbBridge(provider,wagmiClient)}}> Swap ETH into Arbitrum </button>
       </RainbowKitProvider>
     </WagmiConfig>
+
+    <div>
+      <h3>Supported Chains:</h3>
+      Arbitrum Testnet, Ethereum, polygon
+          </div>
+    </div>
+
   );
 }
